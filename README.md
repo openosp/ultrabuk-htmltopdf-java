@@ -1,6 +1,12 @@
 ## Overview
-This project is based on [wkhtmltopdf](https://github.com/wkhtmltopdf/wkhtmltopdf), which converts HTML documents to PDF.
+
+This project is a fork of [wooio/htmltopdf-java](https://github.com/wooio/htmltopdf-java) and is based on [wkhtmltopdf](https://github.com/wkhtmltopdf/wkhtmltopdf), which converts HTML documents to PDF.
 Access to wkhtmltopdf is performed via JNA, exposed through a Java-friendly layer.
+
+This fork:
+- Upgrades wkhtmltopdf version to 0.12.6
+- adds ARM64 support for Linux
+- drops 32-bit support entirely
 
 ## Get it
 
@@ -11,11 +17,17 @@ compile 'io.woo:htmltopdf:1.0.9'
 
 Maven:
 ```xml
+<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+</repositories>
+
 <dependency>
-  <groupId>io.woo</groupId>
-  <artifactId>htmltopdf</artifactId>
+  <groupId>com.github.MagentaHealth</groupId>
+  <artifactId>htmltopdf-java</artifactId>
   <version>1.0.9</version>
-  <scope>compile</scope>
 </dependency>
 ```
 
