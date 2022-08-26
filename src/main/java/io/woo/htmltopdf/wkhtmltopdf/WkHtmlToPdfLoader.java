@@ -47,11 +47,25 @@ class WkHtmlToPdfLoader {
             throw new RuntimeException("32 bit platforms are no longer supported");
         }
 
-        return "/wkhtmltox/0.12.5/"
-                + (Platform.isWindows() ? "" : "lib")
-                + "wkhtmltox"
-                + (Platform.isWindows() ? ".dll"
-                    : Platform.isMac() ? ".dylib"
-                        : ".so");
+        String libPath = "/wkhtmltox/0.12.6/";
+
+        libPath += Platform.isWindows() ? "" : "lib";
+        libPath += "wkhtmltox";
+
+        if (Platform.isWindows()) {
+            libPath += ".dll";
+        }
+        else if (Platform.isMac()) {
+            if (Platform.isARM()) {
+                throw new RuntimeException("ARM Macs are not yet supported. See: https://github.com/wkhtmltopdf/wkhtmltopdf/issues/5219");
+            }
+            libPath += ".dylib";
+        }
+        else { // Linux
+            libPath += Platform.isARM() ? ".arm64" : ".amd64";
+            libPath += ".so";
+        }
+
+        return libPath;
     }
 }
