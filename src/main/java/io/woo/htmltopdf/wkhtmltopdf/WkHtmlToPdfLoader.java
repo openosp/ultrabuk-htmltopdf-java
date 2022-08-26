@@ -43,10 +43,13 @@ class WkHtmlToPdfLoader {
     }
 
     private static String getLibraryResource() {
+        if (!Platform.is64Bit()) {
+            throw new RuntimeException("32 bit platforms are no longer supported");
+        }
+
         return "/wkhtmltox/0.12.5/"
                 + (Platform.isWindows() ? "" : "lib")
                 + "wkhtmltox"
-                + (Platform.is64Bit() ? "" : ".32")
                 + (Platform.isWindows() ? ".dll"
                     : Platform.isMac() ? ".dylib"
                         : ".so");
