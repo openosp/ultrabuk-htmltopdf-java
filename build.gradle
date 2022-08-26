@@ -1,5 +1,5 @@
 group 'io.woo'
-version '1.0.8'
+version '1.0.9'
 
 apply plugin: 'java'
 apply plugin: 'maven'
@@ -22,6 +22,10 @@ ext."signing.secretKeyRingFile" = envOrProperty('SIGNING_SECRETKEYRINGFILE', 'si
 
 repositories {
     mavenCentral()
+}
+
+jar {
+    from sourceSets.main.allSource
 }
 
 task javadocJar(type: Jar) {
