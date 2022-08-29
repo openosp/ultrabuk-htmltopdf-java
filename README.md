@@ -5,7 +5,8 @@ Access to wkhtmltopdf is performed via JNA, exposed through a Java-friendly laye
 
 This fork:
 - Upgrades wkhtmltopdf version to 0.12.6
-- adds ARM64 support for Linux
+- adds ARM support for Linux
+- Upgrades to JNA 5.12.1 as previous versions could not detect aarch64
 - drops 32-bit support entirely
 
 ## Get it
