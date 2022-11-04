@@ -47,10 +47,12 @@ class WkHtmlToPdfLoader {
             throw new RuntimeException("32 bit platforms are no longer supported");
         }
 
-        String libPath = "/wkhtmltox/0.12.6/";
+        String libPath = "/wkhtmltox";
+        
+        // 0.12.6 doesn't currently seem to work correctly on Mac, so serve an older version for Macs for now
+        libPath += Platform.isMac() ? "/0.12.5" : "/0.12.6";
 
-        libPath += Platform.isWindows() ? "" : "lib";
-        libPath += "wkhtmltox";
+        libPath += "/libwkhtmltox";
 
         if (Platform.isWindows()) {
             libPath += ".dll";
@@ -62,6 +64,7 @@ class WkHtmlToPdfLoader {
             libPath += ".dylib";
         }
         else { // Linux
+            // TODO: Deal with Debian vs Ubuntu... seems the binaries are different on each
             libPath += Platform.isARM() ? ".arm64" : ".amd64";
             libPath += ".so";
         }
