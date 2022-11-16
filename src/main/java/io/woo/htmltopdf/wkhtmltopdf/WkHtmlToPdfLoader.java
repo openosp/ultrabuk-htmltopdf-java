@@ -4,10 +4,14 @@ import com.sun.jna.Native;
 import com.sun.jna.Platform;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+
+import java.util.Properties;
 
 class WkHtmlToPdfLoader {
 
@@ -63,10 +67,26 @@ class WkHtmlToPdfLoader {
             }
             libPath += ".dylib";
         }
-        else { // Linux
-            // TODO: Deal with Debian vs Ubuntu... seems the binaries are different on each
+        else if (Platform.isLinux()) {
+            Properties osReleaseProperties = new Properties();
+
+            try {
+                osReleaseProperties.load(new FileInputStream("/etc/os-release"));
+            }
+            catch (IOException e) {
+                throw new RuntimeException("File /etc/os-release not found. What kind of Linux install is this?");
+            }
+
+            String id = osReleaseProperties.getProperty("ID");
+            String versionCodename = osReleaseProperties.getProperty("VERSION_CODENAME");
+
+            libPath += id;
+            libPath += versionCodename;
             libPath += Platform.isARM() ? ".arm64" : ".amd64";
             libPath += ".so";
+        }
+        else {
+            throw new RuntimeException("Your platform is unsupported. What platform is this?");
         }
 
         return libPath;

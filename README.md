@@ -13,7 +13,7 @@ This fork:
 
 Gradle:
 ```groovy
-compile 'io.woo:htmltopdf:1.0.9.2'
+compile 'io.woo:htmltopdf:1.0.9.3'
 ```
 
 Maven:
@@ -28,7 +28,7 @@ Maven:
 <dependency>
   <groupId>com.github.MagentaHealth</groupId>
   <artifactId>htmltopdf-java</artifactId>
-  <version>1.0.9.2</version>
+  <version>1.0.9.3</version>
 </dependency>
 ```
 
@@ -108,3 +108,24 @@ It might be worth checking that the following packages are installed:
 - freetype
 - fontconfig
 
+## Developer Notes
+
+Useful commands when trying to upgrade library files in `src/main/resources/wkhtmltox`:
+
+### How to open a deb file example
+
+```
+mkdir -p wkhtmltox_0.12.6.1-2.bullseye_arm64 && tar xf wkhtmltox_0.12.6.1-2.bullseye_arm64.deb -C wkhtmltox_0.12.6.1-2.bullseye_arm64
+cd wkhtmltox_0.12.6.1-2.bullseye_arm64
+mkdir -p data && tar xf data.tar.xz -C data
+```
+
+### How to open a pkg file example
+
+```
+pkgutil --expand wkhtmltox-0.12.6-2.macos-cocoa.pkg wkhtmltox-0.12.6-2.macos-cocoa
+cd wkhtmltox-0.12.6-2.macos-cocoa
+tar xf Payload
+cd usr/local/share/wkhtmltox-installer
+tar xf wkhtmltox.tar.gz
+```
