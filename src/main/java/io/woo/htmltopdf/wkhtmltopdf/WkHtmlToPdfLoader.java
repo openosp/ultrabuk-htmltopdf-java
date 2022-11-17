@@ -51,12 +51,7 @@ class WkHtmlToPdfLoader {
             throw new RuntimeException("32 bit platforms are no longer supported");
         }
 
-        String libPath = "/wkhtmltox";
-        
-        // 0.12.6 doesn't currently seem to work correctly on Mac, so serve an older version for Macs for now
-        libPath += Platform.isMac() ? "/0.12.5" : "/0.12.6";
-
-        libPath += "/libwkhtmltox";
+        String libPath = "/wkhtmltox/0.12.6/libwkhtmltox";
 
         if (Platform.isWindows()) {
             libPath += ".dll";

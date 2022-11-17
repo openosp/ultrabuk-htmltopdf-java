@@ -13,7 +13,7 @@ This fork:
 
 Gradle:
 ```groovy
-compile 'io.woo:htmltopdf:1.0.9.3'
+compile 'io.woo:htmltopdf:1.0.9.4'
 ```
 
 Maven:
@@ -28,7 +28,7 @@ Maven:
 <dependency>
   <groupId>com.github.MagentaHealth</groupId>
   <artifactId>htmltopdf-java</artifactId>
-  <version>1.0.9.3</version>
+  <version>1.0.9.4</version>
 </dependency>
 ```
 
