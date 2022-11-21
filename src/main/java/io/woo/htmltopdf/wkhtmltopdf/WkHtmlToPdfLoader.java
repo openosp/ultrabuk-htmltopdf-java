@@ -26,20 +26,7 @@ class WkHtmlToPdfLoader {
         }
 
         String libPath = getLibraryResource();
-        System.out.println("Attempting to load: " + libPath);
-
         File libraryFile = new File(tmpDir, libPath);
-
-        try {
-            System.out.println("libraryFile.getAbsolutePath(): " + libraryFile.getAbsolutePath());
-            System.out.println("libraryFile.getCanonicalPath(): " + libraryFile.getCanonicalPath());
-            System.out.println("libraryFile.getName(): " + libraryFile.getName());
-            System.out.println("libraryFile.getPath(): " + libraryFile.getPath());
-            System.out.println("libraryFile.toString(): " + libraryFile.toString());
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
         if (!libraryFile.exists()) {
             try {
@@ -90,15 +77,10 @@ class WkHtmlToPdfLoader {
             String id = osReleaseProperties.getProperty("ID");
             String versionCodename = osReleaseProperties.getProperty("VERSION_CODENAME");
 
-            System.out.println("id: " + id);
-            System.out.println("versionCodename: " + versionCodename);
-
             libPath += "." + id;
             libPath += "." + versionCodename;
             libPath += Platform.isARM() ? ".arm64" : ".amd64";
             libPath += ".so";
-
-            System.out.println("libPath: " + libPath);
         }
         else {
             throw new RuntimeException("Your platform is unsupported. What platform is this?");
