@@ -93,8 +93,8 @@ class WkHtmlToPdfLoader {
             System.out.println("id: " + id);
             System.out.println("versionCodename: " + versionCodename);
 
-            libPath += id;
-            libPath += versionCodename;
+            libPath += "." + id;
+            libPath += "." + versionCodename;
             libPath += Platform.isARM() ? ".arm64" : ".amd64";
             libPath += ".so";
 
