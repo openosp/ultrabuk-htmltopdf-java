@@ -30,11 +30,16 @@ class WkHtmlToPdfLoader {
 
         File libraryFile = new File(tmpDir, libPath);
 
-        System.out.println("libraryFile.getAbsolutePath(): " + libraryFile.getAbsolutePath());
-        System.out.println("libraryFile.getCanonicalPath(): " + libraryFile.getCanonicalPath());
-        System.out.println("libraryFile.getName(): " + libraryFile.getName());
-        System.out.println("libraryFile.getPath(): " + libraryFile.getPath());
-        System.out.println("libraryFile.toString(): " + libraryFile.toString());
+        try {
+            System.out.println("libraryFile.getAbsolutePath(): " + libraryFile.getAbsolutePath());
+            System.out.println("libraryFile.getCanonicalPath(): " + libraryFile.getCanonicalPath());
+            System.out.println("libraryFile.getName(): " + libraryFile.getName());
+            System.out.println("libraryFile.getPath(): " + libraryFile.getPath());
+            System.out.println("libraryFile.toString(): " + libraryFile.toString());
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         if (!libraryFile.exists()) {
             try {
