@@ -25,14 +25,24 @@ class WkHtmlToPdfLoader {
             throw new IllegalStateException("htmltopdf temporary directory is not writable");
         }
 
-        File libraryFile = new File(tmpDir, getLibraryResource());
+        String libPath = getLibraryResource();
+        System.out.println("Attempting to load: " + libPath);
+
+        File libraryFile = new File(tmpDir, libPath);
+
+        System.out.println("libraryFile.getAbsolutePath(): " + libraryFile.getAbsolutePath());
+        System.out.println("libraryFile.getCanonicalPath(): " + libraryFile.getCanonicalPath());
+        System.out.println("libraryFile.getName(): " + libraryFile.getName());
+        System.out.println("libraryFile.getPath(): " + libraryFile.getPath());
+        System.out.println("libraryFile.toString(): " + libraryFile.toString());
+
         if (!libraryFile.exists()) {
             try {
                 File dirPath = libraryFile.getParentFile();
                 if (!dirPath.exists() && !dirPath.mkdirs()) {
                     throw new IllegalStateException("unable to create directories for native library");
                 }
-                try (InputStream in = WkHtmlToPdfLoader.class.getResourceAsStream(getLibraryResource())) {
+                try (InputStream in = WkHtmlToPdfLoader.class.getResourceAsStream(libPath)) {
                     Files.copy(in, libraryFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                 }
             } catch (IOException e) {
@@ -75,10 +85,15 @@ class WkHtmlToPdfLoader {
             String id = osReleaseProperties.getProperty("ID");
             String versionCodename = osReleaseProperties.getProperty("VERSION_CODENAME");
 
+            System.out.println("id: " + id);
+            System.out.println("versionCodename: " + versionCodename);
+
             libPath += id;
             libPath += versionCodename;
             libPath += Platform.isARM() ? ".arm64" : ".amd64";
             libPath += ".so";
+
+            System.out.println("libPath: " + libPath);
         }
         else {
             throw new RuntimeException("Your platform is unsupported. What platform is this?");
