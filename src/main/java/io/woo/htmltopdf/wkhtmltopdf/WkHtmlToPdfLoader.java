@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import java.util.Properties;
@@ -42,7 +43,7 @@ class WkHtmlToPdfLoader {
             }
         }
 
-        WkHtmlToPdf instance = (WkHtmlToPdf)Native.loadLibrary(libraryFile.getAbsolutePath(), WkHtmlToPdf.class);
+        WkHtmlToPdf instance = (WkHtmlToPdf)Native.load(libraryFile.getAbsolutePath(), WkHtmlToPdf.class);
         instance.wkhtmltopdf_init(0);
 
         return instance;
@@ -68,7 +69,7 @@ class WkHtmlToPdfLoader {
             Properties osReleaseProperties = new Properties();
 
             try {
-                osReleaseProperties.load(new FileInputStream("/etc/os-release"));
+                osReleaseProperties.load(Files.newInputStream(Paths.get("/etc/os-release")));
             }
             catch (IOException e) {
                 throw new RuntimeException("File /etc/os-release not found. What kind of Linux install is this?");
