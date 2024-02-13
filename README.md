@@ -26,11 +26,12 @@ Maven:
 </repositories>
 
 <dependency>
-  <groupId>com.github.MagentaHealth</groupId>
-  <artifactId>htmltopdf-java</artifactId>
-  <version>1.0.10.0</version>
+    <groupId>com.github.openosp</groupId>
+    <artifactId>ultrabuk-htmltopdf-java</artifactId>
+    <version>1.0.10.0</version>
 </dependency>
 ```
+[![](https://jitpack.io/v/openosp/ultrabuk-htmltopdf-java.svg)](https://jitpack.io/#openosp/ultrabuk-htmltopdf-java)
 
 ## Getting started
 

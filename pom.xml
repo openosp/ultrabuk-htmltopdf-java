@@ -3,8 +3,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.github.MagentaHealth</groupId>
-  <artifactId>htmltopdf-java</artifactId>
+  <groupId>com.github.openosp</groupId>
+  <artifactId>ultrabuk-htmltopdf-java</artifactId>
   <version>1.0.10.0</version>
 
   <dependencies>
