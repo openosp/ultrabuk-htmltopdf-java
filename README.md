@@ -13,7 +13,7 @@ This fork:
 
 Gradle:
 ```groovy
-compile 'io.woo:htmltopdf:1.0.10.0'
+compile 'io.woo:htmltopdf:1.0.10.1'
 ```
 
 Maven:
@@ -28,7 +28,7 @@ Maven:
 <dependency>
     <groupId>com.github.openosp</groupId>
     <artifactId>ultrabuk-htmltopdf-java</artifactId>
-    <version>1.0.10.0</version>
+    <version>1.0.10.1</version>
 </dependency>
 ```
 [![](https://jitpack.io/v/openosp/ultrabuk-htmltopdf-java.svg)](https://jitpack.io/#openosp/ultrabuk-htmltopdf-java)
